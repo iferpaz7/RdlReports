@@ -1,5 +1,8 @@
 # RdlcReports
-Create API for Dynamics Reports Using Report Viewer
+API for Dynamics Reports Using Report Viewer
 
-#Description 
-1. First Step Create Web Api Net Framework
+#Steps to create a Web Api for create reports using Report Viewer 
+1. Create a Web Api .Net Framework
+2. Install this nuget
+3. 
+4. Test api in postman using the collection
