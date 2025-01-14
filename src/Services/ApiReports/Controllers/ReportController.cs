@@ -1,12 +1,11 @@
-﻿using Microsoft.Reporting.WebForms;
-using Newtonsoft.Json;
-using ApiReports.Helpers;
+﻿using ApiReports.Helpers;
 using ApiReports.Models;
+using Microsoft.Reporting.WebForms;
+using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Web.Http;
 
 namespace ApiReports.Controllers
@@ -28,7 +27,7 @@ namespace ApiReports.Controllers
                     string fileName = string.Empty;
                     foreach (var item in parameters.rdlcProps)
                     {
-                        if (item.Key == "rdlcName")
+                        if (item.Key == "ReportName")
                         {
                             lr.ReportPath = Path.Combine(System.Web.Hosting.HostingEnvironment.MapPath("~/Reports"), item.Value);
                         }
@@ -94,7 +93,7 @@ namespace ApiReports.Controllers
             catch (Exception ex)
             {
                 _response.message = ex.Message;
-                return this.Request.CreateResponse(HttpStatusCode.OK, _response);
+                return this.Request.CreateResponse(HttpStatusCode.BadRequest, ex.InnerException);
             }
         }
     }

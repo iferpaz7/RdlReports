@@ -1,5 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
+<Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily" xmlns:am="http://schemas.microsoft.com/sqlserver/reporting/authoringmetadata">
+  <am:AuthoringMetadata>
+    <am:CreatedBy>
+      <am:Name>MSRB</am:Name>
+      <am:Version>15.0.20283.0</am:Version>
+    </am:CreatedBy>
+    <am:UpdatedBy>
+      <am:Name>MSRB</am:Name>
+      <am:Version>15.0.20283.0</am:Version>
+    </am:UpdatedBy>
+    <am:LastModifiedTimestamp>2025-01-14T05:25:19.5825841Z</am:LastModifiedTimestamp>
+  </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -22,46 +33,42 @@
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="dsDetails">
+    <DataSet Name="SalesData">
       <Query>
         <DataSourceName>mainDataSource</DataSourceName>
         <CommandText />
       </Query>
       <Fields>
-        <Field Name="code">
-          <DataField>code</DataField>
+        <Field Name="Code">
+          <DataField>Code</DataField>
           <rd:UserDefined>true</rd:UserDefined>
         </Field>
-        <Field Name="product">
-          <DataField>product</DataField>
+        <Field Name="ProductName">
+          <DataField>ProductName</DataField>
           <rd:UserDefined>true</rd:UserDefined>
         </Field>
-        <Field Name="cost">
-          <DataField>cost</DataField>
+        <Field Name="Quantity">
+          <DataField>Quantity</DataField>
           <rd:UserDefined>true</rd:UserDefined>
         </Field>
-        <Field Name="discount">
-          <DataField>discount</DataField>
-          <rd:UserDefined>true</rd:UserDefined>
-        </Field>
-        <Field Name="total">
-          <DataField>total</DataField>
+        <Field Name="Price">
+          <DataField>Price</DataField>
           <rd:UserDefined>true</rd:UserDefined>
         </Field>
       </Fields>
     </DataSet>
-    <DataSet Name="dsInfo">
+    <DataSet Name="CustomerData">
       <Query>
         <DataSourceName>dataSourceSecond</DataSourceName>
         <CommandText />
       </Query>
       <Fields>
-        <Field Name="address">
-          <DataField>address</DataField>
+        <Field Name="CustomerName">
+          <DataField>CustomerName</DataField>
           <rd:UserDefined>true</rd:UserDefined>
         </Field>
-        <Field Name="telephone">
-          <DataField>telephone</DataField>
+        <Field Name="Contact">
+          <DataField>Contact</DataField>
           <rd:UserDefined>true</rd:UserDefined>
         </Field>
       </Fields>
@@ -167,7 +174,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>cost</Value>
+                                  <Value>price</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -199,7 +206,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>discount</Value>
+                                  <Value>quantity</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -263,21 +270,21 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="code">
+                        <Textbox Name="Code">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!code.Value</Value>
+                                  <Value>=Fields!Code.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>code</rd:DefaultName>
+                          <rd:DefaultName>Code</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -293,21 +300,21 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="product">
+                        <Textbox Name="ProductName">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!product.Value</Value>
+                                  <Value>=Fields!ProductName.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>product</rd:DefaultName>
+                          <rd:DefaultName>ProductName</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -323,14 +330,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="cost">
+                        <Textbox Name="Price">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!cost.Value</Value>
+                                  <Value>=Fields!Price.Value</Value>
                                   <Style>
                                     <Format>#,0.00;(#,0.00)</Format>
                                   </Style>
@@ -341,7 +348,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>cost</rd:DefaultName>
+                          <rd:DefaultName>Price</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -357,14 +364,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="discount">
+                        <Textbox Name="Quantity">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!discount.Value</Value>
+                                  <Value>=Fields!Quantity.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <Format>#,0.00;(#,0.00)</Format>
@@ -376,7 +383,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>discount</rd:DefaultName>
+                          <rd:DefaultName>Quantity</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -399,7 +406,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!total.Value</Value>
+                                  <Value>=Fields!Quantity.Value*Fields!Price.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <Format>#,0.00;(#,0.00)</Format>
@@ -448,7 +455,7 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>dsDetails</DataSetName>
+            <DataSetName>SalesData</DataSetName>
             <Top>2.13833in</Top>
             <Left>0.155in</Left>
             <Height>0.5in</Height>
@@ -498,7 +505,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>address</Value>
+                                  <Value>Customer</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -560,21 +567,21 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="address">
+                        <Textbox Name="CustomerName">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!address.Value</Value>
+                                  <Value>=Fields!CustomerName.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>address</rd:DefaultName>
+                          <rd:DefaultName>CustomerName</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -590,21 +597,21 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="telephone">
+                        <Textbox Name="Contact">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!telephone.Value</Value>
+                                  <Value>=Fields!Contact.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>telephone</rd:DefaultName>
+                          <rd:DefaultName>Contact</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -638,7 +645,7 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>dsInfo</DataSetName>
+            <DataSetName>CustomerData</DataSetName>
             <Top>2.78in</Top>
             <Left>0.155in</Left>
             <Height>0.5in</Height>
@@ -672,7 +679,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Parameters!title.Value</Value>
+                      <Value>=Parameters!ReportTitle.Value</Value>
                       <Style>
                         <FontFamily>Segoe UI Light</FontFamily>
                         <FontSize>28pt</FontSize>
@@ -763,17 +770,29 @@
       <AllowBlank>true</AllowBlank>
       <Prompt>logo</Prompt>
     </ReportParameter>
-    <ReportParameter Name="title">
+    <ReportParameter Name="ReportTitle">
       <DataType>String</DataType>
       <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
-      <Prompt>title</Prompt>
+      <Prompt>ReportTitle</Prompt>
     </ReportParameter>
     <ReportParameter Name="mimeTypeLogo">
       <DataType>String</DataType>
       <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
       <Prompt>mimeTypeLogo</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="GeneratedBy">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>GeneratedBy</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Date">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Date</Prompt>
     </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
@@ -789,12 +808,22 @@
         <CellDefinition>
           <ColumnIndex>1</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>title</ParameterName>
+          <ParameterName>ReportTitle</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>2</ColumnIndex>
           <RowIndex>0</RowIndex>
           <ParameterName>mimeTypeLogo</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>3</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>GeneratedBy</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>Date</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

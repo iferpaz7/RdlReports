@@ -1,8 +1,8 @@
+using ApiReports.Areas.HelpPage.ModelDescriptions;
+using ApiReports.Areas.HelpPage.Models;
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using ApiReports.Areas.HelpPage.ModelDescriptions;
-using ApiReports.Areas.HelpPage.Models;
 
 namespace ApiReports.Areas.HelpPage.Controllers
 {
